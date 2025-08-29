@@ -6,7 +6,7 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   integrations: [
     starlight({
-      title: "My Docs",
+      title: "AI per Docenti 2025",
       customCss: ["./src/styles/custom.css"],
       social: [
         {
@@ -18,7 +18,7 @@ export default defineConfig({
       sidebar: [
         {
           label: "Guides",
-          collapsed: false,
+          collapsed: true,
           items: [
             // Each item here is one entry in the navigation menu.
             { label: "Example Guide", slug: "guides/example" },
@@ -26,7 +26,7 @@ export default defineConfig({
         },
         {
           label: "SQL",
-          collapsed: true,
+          collapsed: false,
           items: [
             { label: "SQL — Parte 1", slug: "sql/sql-p1" },
             { label: "SQL — Parte 2", slug: "sql/sql-p2" },
