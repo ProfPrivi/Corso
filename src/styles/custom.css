@@ -13,6 +13,21 @@
     --sl-toc-width: 13rem;
   }
 }
+/* Riduce la larghezza della sidebar */
+:root {
+  /* Larghezza sidebar ridotta da 18rem (default) a 14rem */
+  --sl-sidebar-width: 14rem;
+  /* Larghezza sidebar destra (TOC). Default ~18rem: la riduciamo per recuperare spazio. */
+  --sl-toc-width: 12.5rem;
+}
+
+/* Su schermi medi, riduce ulteriormente */
+@media (min-width: 50rem) and (max-width: 72rem) {
+  :root {
+    --sl-sidebar-width: 12rem;
+    --sl-toc-width: 13rem;
+  }
+}
 
 /* Aumenta la larghezza massima del contenuto principale su schermi molto grandi */
 @media (min-width: 90rem) {
@@ -88,4 +103,91 @@
     width: auto !important;
     flex: 1 1 auto !important;
   }
+}
+
+/* Migliorie estetiche per blocchi di codice e evidenziazione sintattica */
+/* Copre pre/code generici, Prism e output di Shiki */
+pre, code, .sl-code, .code-block {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", "Fira Code", "Courier New", monospace;
+  font-variant-ligatures: contextual;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Blocchi di codice (multilinea) */
+pre[class*="language-"], pre code, .code-block, .sl-code {
+  background: var(--code-bg, #f6f8fa);
+  color: var(--code-color, #0f172a);
+  padding: 0.9rem 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow: auto;
+  white-space: pre;
+  tab-size: 2;
+  box-shadow: var(--code-shadow, 0 1px 0 rgba(15,23,42,0.03));
+}
+
+/* Inline code */
+code:not(pre code) {
+  background: rgba(27,31,35,0.05);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.35rem;
+  font-size: 0.92em;
+}
+
+/* Forza il wrapping visivo per parole molto lunghe e evita overflow sporgente */
+pre[class*="language-"] code, pre code {
+  word-break: break-word;
+  /* mantieni monospace e permetti lo scorrimento orizzontale quando necessario */
+  white-space: pre;
+}
+
+/* Migliora accessibilità: evidenzia il focus sul blocco codice */
+pre:focus, pre:focus-within {
+  outline: 3px solid rgba(59,130,246,0.15);
+  outline-offset: 2px;
+}
+
+/* Stile per token di evidenziazione (Prism/Shiki) - mantiene contrasto e leggibilità */
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  opacity: 0.7;
+}
+
+.token.punctuation { opacity: 0.95; }
+
+.token.keyword, .token.selector, .token.function {
+  font-weight: 600;
+}
+
+/* Dark mode: usa colori più scuri */
+@media (prefers-color-scheme: dark) {
+  pre[class*="language-"], pre code, .code-block, .sl-code {
+    background: var(--code-bg-dark, #0b1220);
+    color: var(--code-color-dark, #e6eef6);
+    box-shadow: none;
+  }
+  code:not(pre code) {
+    background: rgba(255,255,255,0.04);
+  }
+}
+
+/* Fallback per temi che impostano un attributo sul body (es. data-theme="dark") */
+body[data-theme="dark"] pre[class*="language-"],
+body[data-theme="dark"] pre code, body[data-theme="dark"] .code-block {
+  background: var(--code-bg-dark, #0b1220);
+  color: var(--code-color-dark, #e6eef6);
+}
+
+/* Riduci la dimensione della linea di numero (se presente) e separatore */
+.code-block .line-numbers, .sl-code .line-numbers {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.8rem;
+  padding-right: 0.65rem;
+}
+
+/* Assicura che elementi inline generati da Shiki/Prism non rompano il layout */
+.token {
+  display: inline;
 }

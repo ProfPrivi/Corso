@@ -47,3 +47,22 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+
+## Customizzare l'aspetto dei blocchi di codice
+
+Se i blocchi di codice appaiono con difetti estetici, ho aggiunto alcune regole CSS in `src/styles/custom.css` per migliorare:
+
+- font monospace coerente e smoothing
+- padding, bordi arrotondati e shadow leggero
+- overflow (scorrimento orizzontale) e gestione del wrapping
+- supporto per dark mode (sia `prefers-color-scheme` che `body[data-theme="dark"]`)
+
+Per testare le modifiche in locale:
+
+```powershell
+npm install
+npm run dev
+# apri http://localhost:4321/materiale-corso/ nel browser
+```
+
+Se vuoi altri aggiustamenti (forzare il wrapping, cambiare colori o dettagliare i numeri di riga), dimmi come li preferisci e applico le modifiche.
