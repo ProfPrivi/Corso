@@ -62,7 +62,7 @@ Per testare le modifiche in locale:
 ```powershell
 npm install
 npm run dev
-# apri http://localhost:4321/materiale-corso/ nel browser
+# apri http://localhost:4321/Corso/ nel browser
 ```
 
 Se vuoi altri aggiustamenti (forzare il wrapping, cambiare colori o dettagliare i numeri di riga), dimmi come li preferisci e applico le modifiche.

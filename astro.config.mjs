@@ -41,6 +41,7 @@ export default defineConfig({
       ],
     }),
   ],
-  site: "https://malafronte.github.io",
-  base: "/materiale-corso/",
+  // Public site and base configured for GitHub Pages (project site)
+  site: "https://profprivi.github.io/Corso",
+  base: "/Corso/",
 });
